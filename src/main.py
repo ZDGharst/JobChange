@@ -18,7 +18,7 @@ def normalize(data, feature):
     return(result)
 
 dataset = pd.read_csv("~/Projects/JobChange/input/raw.csv")
-dataset.fillna(0, inplace=True)
+dataset.fillna(0, inplace = True)
 
 features_to_encode = ['gender', 'relevent_experience', 'enrolled_university', 'education_level',
 'major_discipline', 'company_size', 'company_type', 'last_new_job']
@@ -28,6 +28,8 @@ for feature in features_to_encode:
 dataset = normalize(dataset, "training_hours")
 dataset = normalize(dataset, "experience")
 
-dataset.sample(frac=1)
-train_data = dataset.sample(frac=.85,random_state=None)
-test_data = dataset.drop(train_data.index)
+# Shuffle rows in the dataset, then split into train and test data.
+# By doing it this way, we avoid converting to a numpy with np.split()
+dataset  = dataset.sample(frac = 1)
+training = dataset.sample(frac = .85, random_state = None)
+testing  = dataset.drop(train_data.index)
