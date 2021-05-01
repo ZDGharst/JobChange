@@ -42,9 +42,9 @@ testing_labels  = tf.keras.utils.to_categorical(testing_labels)
 
 model = tf.keras.Model
 model = tf.keras.Sequential([
-        tf.keras.layers.Dense(49, activation="relu"),
-        tf.keras.layers.Dense(64, activation="relu"),
-        tf.keras.layers.Dense( 2, activation="softmax")
+        tf.keras.layers.Dense(128, activation="relu"),
+        tf.keras.layers.Dense( 64, activation="relu"),
+        tf.keras.layers.Dense(  2, activation="softmax")
 ])
 model.compile(optimizer='Adam',loss='mean_squared_error', metrics=['accuracy'])
 model.fit(
