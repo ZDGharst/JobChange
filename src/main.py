@@ -38,4 +38,21 @@ testing  = dataset.drop(training.index)
 training_labels = training.pop('target')
 testing_labels  = testing.pop('target')
 
-print(training_labels)
+# print(training.shape)
+# print(training.head(5))
+
+model = tf.keras.Model
+model = tf.keras.Sequential([
+        tf.keras.layers.Dense(49,activation="relu"),
+        tf.keras.layers.Dense(64,activation="relu"),
+        tf.keras.layers.Dense(64,activation="relu"),
+        tf.keras.layers.Dense(1,activation="softmax")
+])
+model.compile(optimizer='adam',loss='mean_squared_error', metrics=['accuracy'])
+model.fit(
+    training,
+    training_labels,
+    epochs = 30,
+    validation_split = 0.176,
+    batch_size = 2
+)
