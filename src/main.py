@@ -1,3 +1,4 @@
+import tensorflow as tf
 import pandas as pd
 
 # Thank you to https://stackoverflow.com/questions/37292872/how-can-i-one-hot-encode-in-python!
@@ -27,4 +28,6 @@ for feature in features_to_encode:
 dataset = normalize(dataset, "training_hours")
 dataset = normalize(dataset, "experience")
 
-print(dataset.head(5))
+dataset.sample(frac=1)
+train_data = dataset.sample(frac=.85,random_state=None)
+test_data = dataset.drop(train_data.index)
