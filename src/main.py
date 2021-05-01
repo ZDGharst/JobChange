@@ -32,4 +32,10 @@ dataset = normalize(dataset, "experience")
 # By doing it this way, we avoid converting to a numpy with np.split()
 dataset  = dataset.sample(frac = 1)
 training = dataset.sample(frac = .85, random_state = None)
-testing  = dataset.drop(train_data.index)
+testing  = dataset.drop(training.index)
+
+# Split labels off into their own dataframe
+training_labels = training.pop('target')
+testing_labels  = testing.pop('target')
+
+print(training_labels)
