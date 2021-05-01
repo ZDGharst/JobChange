@@ -37,6 +37,8 @@ testing  = dataset.drop(training.index)
 # Split labels off into their own dataframe
 training_labels = training.pop('target')
 testing_labels  = testing.pop('target')
+training_labels = tf.keras.utils.to_categorical(training_labels)
+testing_labels  = tf.keras.utils.to_categorical(testing_labels )
 
 # print(training.shape)
 # print(training.head(5))
@@ -46,7 +48,7 @@ model = tf.keras.Sequential([
         tf.keras.layers.Dense(49,activation="relu"),
         tf.keras.layers.Dense(64,activation="relu"),
         tf.keras.layers.Dense(64,activation="relu"),
-        tf.keras.layers.Dense(1,activation="softmax")
+        tf.keras.layers.Dense(2,activation="softmax")
 ])
 model.compile(optimizer='adam',loss='mean_squared_error', metrics=['accuracy'])
 model.fit(
