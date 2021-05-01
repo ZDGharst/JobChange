@@ -31,30 +31,30 @@ dataset = normalize(dataset, "experience")
 # Shuffle rows in the dataset, then split into train and test data.
 # By doing it this way, we avoid converting to a numpy with np.split()
 dataset  = dataset.sample(frac = 1)
-training = dataset.sample(frac = .85, random_state = None)
+training = dataset.sample(frac = 0.85, random_state = None)
 testing  = dataset.drop(training.index)
 
-# Split labels off into their own dataframe
+# Split labels off into their own dataframe and one_hot_encode them
 training_labels = training.pop('target')
 testing_labels  = testing.pop('target')
 training_labels = tf.keras.utils.to_categorical(training_labels)
-testing_labels  = tf.keras.utils.to_categorical(testing_labels )
-
-# print(training.shape)
-# print(training.head(5))
+testing_labels  = tf.keras.utils.to_categorical(testing_labels)
 
 model = tf.keras.Model
 model = tf.keras.Sequential([
-        tf.keras.layers.Dense(49,activation="relu"),
-        tf.keras.layers.Dense(64,activation="relu"),
-        tf.keras.layers.Dense(64,activation="relu"),
-        tf.keras.layers.Dense(2,activation="softmax")
+        tf.keras.layers.Dense(49, activation="relu"),
+        tf.keras.layers.Dense(64, activation="relu"),
+        tf.keras.layers.Dense( 2, activation="softmax")
 ])
-model.compile(optimizer='adam',loss='mean_squared_error', metrics=['accuracy'])
+model.compile(optimizer='Adam',loss='mean_squared_error', metrics=['accuracy'])
 model.fit(
     training,
     training_labels,
-    epochs = 30,
+    epochs = 400,
     validation_split = 0.176,
-    batch_size = 2
+    batch_size = 20
 )
+
+test_loss, test_accuracy = model.evaluate(testing, testing_labels, verbose=2)
+print("Test loss:", test_loss)
+print("Test accuracy:", test_accuracy)
