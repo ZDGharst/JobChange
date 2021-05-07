@@ -20,7 +20,7 @@ I have found the best results by using a network on the smaller side. My final n
 
 Other attempts I have tried include: using relu for hidden layer activation, softmax on the output layer with two neurons, larger number of layers and fewer number of layers. Two neurons in the output layer relays the same sort of information as one binary neuron; however, results tend to be worse by about 2% when evaluating the model.
 
-It’s possible to reach 95% training accuracy with 400 epochs; however, this overfits the model and actually reduces the testing accuracy. The accuracy starts to drop around 50 epochs, which is probably where the model starts to become overfit. 
+It’s possible to reach 95% training accuracy with 400 epochs; however, this overfits the model and actually reduces the testing accuracy. The accuracy starts to drop around 50 epochs, which is probably where the model starts to become overfit.
 
 ## Conclusion & Future Scope
 
@@ -28,4 +28,4 @@ After typing hundreds of lines of Python, but only keeping 60 of it, I believe t
 
 There’s also a possibility that there is no real correlation between our features and the label. It seems like it would be obvious that there would be, but at this point in time, I’m not entirely convinced without more data. There are also a few columns that have too many null values or minority values (such as gender).
 
-There are other toolkits, such as sklearn, that allow you to modify your network to account for minority representation. I attempted to only stick with the assignment requirements of TensorFlow, but I would like to step out of this requirement to try to increase my accuracy.
+There are other toolkits, such as sklearn, that allow you to modify your network to account for minority representation. I attempted to only stick with the assignment requirements of TensorFlow, but I would like to step out of this requirement to try to increase my accuracy.Don't hurt me
