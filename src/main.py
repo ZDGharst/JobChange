@@ -34,24 +34,25 @@ dataset  = dataset.sample(frac = 1)
 training = dataset.sample(frac = 0.85, random_state = None)
 testing  = dataset.drop(training.index)
 
-# Split labels off into their own dataframe and one_hot_encode them
+# Split labels off into their own dataframe. One hot encode them if
+# there are two neurons in the output layer.
 training_labels = training.pop('target')
 testing_labels  = testing.pop('target')
-training_labels = tf.keras.utils.to_categorical(training_labels)
-testing_labels  = tf.keras.utils.to_categorical(testing_labels)
+# training_labels = tf.keras.utils.to_categorical(training_labels)
+# testing_labels  = tf.keras.utils.to_categorical(testing_labels)
 
 model = tf.keras.Model
 model = tf.keras.Sequential([
-        tf.keras.layers.Dense(128, activation="relu"),
-        tf.keras.layers.Dense( 64, activation="relu"),
-        tf.keras.layers.Dense(  2, activation="softmax")
+        tf.keras.layers.Dense(128, activation="tanh"),
+        tf.keras.layers.Dense( 64, activation="tanh"),
+        tf.keras.layers.Dense(  1, activation="sigmoid")
 ])
 model.compile(optimizer='Adam',loss='mean_squared_error', metrics=['accuracy'])
 model.fit(
     training,
     training_labels,
-    epochs = 400,
-    validation_split = 0.176,
+    epochs = 20,
+    validation_split = 0.1765,
     batch_size = 20
 )
 
