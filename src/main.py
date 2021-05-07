@@ -1,13 +1,15 @@
 import tensorflow as tf
 import pandas as pd
 
-# Thank you to https://stackoverflow.com/questions/37292872/how-can-i-one-hot-encode-in-python!
+# Credit to Cybernetic on StackOverflow
+# https://stackoverflow.com/questions/37292872/how-can-i-one-hot-encode-in-python!
 def one_hot_encode(data, feature):
     dummy = pd.get_dummies(data[[feature]])
     result = pd.concat([data, dummy], axis = 1)
     result = result.drop([feature], axis = 1)
     return(result)
 
+# Credit to Sandman on StackOverflow
 # https://stackoverflow.com/questions/26414913/normalize-columns-of-pandas-data-frame
 def normalize(data, feature):
     result = data.copy()
