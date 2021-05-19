@@ -28,4 +28,4 @@ After typing hundreds of lines of Python, but only keeping 60 of it, I believe t
 
 There’s also a possibility that there is no real correlation between our features and the label. It seems like it would be obvious that there would be, but at this point in time, I’m not entirely convinced without more data. There are also a few columns that have too many null values or minority values (such as gender).
 
-There are other toolkits, such as sklearn, that allow you to modify your network to account for minority representation. I attempted to only stick with the assignment requirements of TensorFlow, but I would like to step out of this requirement to try to increase my accuracy.Don't hurt me
+There are other toolkits, such as sklearn, that allow you to modify your network to account for minority representation. I attempted to only stick with the assignment requirements of TensorFlow, but I would like to step out of this requirement to try to increase my accuracy.
